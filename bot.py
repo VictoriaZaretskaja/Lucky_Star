@@ -20,10 +20,11 @@ def send(chat_id, text):
                       "text": text
                   })
 
+
 @app.route("/hook", methods=['POST'])
 def hook():
     chat_id = request.get_json()["message"]["chat"]["id"]
-    text = request.get_json() ["message"] ["text"]
+    text = request.get_json()["message"]["text"]
 
     command, *args = text.split()
 
@@ -36,9 +37,4 @@ def hook():
         )
         send(chat_id, answer)
 
-
     return "OK"
-
-
-
-app.run
