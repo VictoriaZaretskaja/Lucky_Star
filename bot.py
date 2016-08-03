@@ -12,11 +12,11 @@ db = client.heroku_3gwq73vd
 def test():
     return "It works!"
 
-def send():
+def send(chat_id, text):
     requests.post("https://api.telegram.org/bot253643907:AAGRFi8w-YJiyHw-2qioYIn2wQJMdLx-cnQ/sendMessage",
                   {
                       "chat_id": chat_id,
-                      "text": "Hi!"
+                      "text": text
                   })
 
 @app.route("/hook", methods=['POST'])
@@ -30,7 +30,7 @@ def hook():
         db.products.insert({"products": args})
         send(chat_id, "Products added")
 
-    if command =="/get":
+    if command == "/get":
         answer = "\n".join(
             map(str, db.products.find())
         )
@@ -38,8 +38,6 @@ def hook():
 
 
     return "OK"
-
-
 
 
 
