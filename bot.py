@@ -4,13 +4,14 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 
-client = MongoClient("mongodb://<Victoria>:<260784zvg>@ds029635.mlab.com:29635/heroku_3gwq73vd")
+client = MongoClient("mongodb://Victoria:260784zvg@ds029635.mlab.com:29635/heroku_3gwq73vd")
 db = client.heroku_3gwq73vd
 
 
 @app.route('/')
 def test():
     return "It works!"
+
 
 def send(chat_id, text):
     requests.post("https://api.telegram.org/bot253643907:AAGRFi8w-YJiyHw-2qioYIn2wQJMdLx-cnQ/sendMessage",
@@ -29,7 +30,6 @@ def hook():
     if command == "/add":
         db.products.insert({"products": args})
         send(chat_id, "Products added")
-
     if command == "/get":
         answer = "\n".join(
             map(str, db.products.find())
