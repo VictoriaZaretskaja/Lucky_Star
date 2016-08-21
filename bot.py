@@ -38,7 +38,7 @@ def hook():
         send(chat_id, answer)
     if command == "/add_dish":
         db.products.insert({"products": args})
-        send(chat_id, "Products added")
+        send(chat_id, "Dish added")
     if command == "/week":
         answer = "\n".join(
             map(str, db.products.find())
