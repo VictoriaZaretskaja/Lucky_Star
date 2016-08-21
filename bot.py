@@ -1,6 +1,7 @@
 from flask import Flask, request
 import requests
 from pymongo import MongoClient
+import random
 
 app = Flask(__name__)
 
@@ -27,13 +28,14 @@ def hook():
     text = request.get_json()["message"]["text"]
 
     command, *args = text.split()
+    a = random.randint(0, 4)
 
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
     if command == "/week":
         answer = "\n".join(
-            map(str, db.products.find())
+            map(str, db.products.find(a))
         )
         send(chat_id, answer)
 
