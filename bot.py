@@ -36,5 +36,16 @@ def hook():
             map(str, db.products.find())
         )
         send(chat_id, answer)
+    if command == "/add_dish":
+        answer = "\n".join(
+            map(str, db.products.find())
+        )
+        send(chat_id, answer)
+    if command == "/dish":
+        answer = "\n".join(
+            map(str, db.products.find())
+        )
+        send(chat_id, answer)
+
 
     return "OK"
