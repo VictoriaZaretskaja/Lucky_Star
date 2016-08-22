@@ -29,13 +29,14 @@ def hook():
 
     command, *args = text.split()
 
+
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
     if command == "/dish":
         answer = "\n".join(
-        map(str, db.products.find())
-    )
+            map(str, random.choice(db.products.find()))
+        )
         send(chat_id, answer)
 
 
