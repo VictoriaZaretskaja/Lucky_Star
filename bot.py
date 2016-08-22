@@ -37,9 +37,7 @@ def hook():
         answer = random.choice(db.products.find())
         send(chat_id, answer)
     if command == "/Help":
-        answer = "\n".join(
-            map(str, print("You could add a dish with command /add_dish", "and give a dish with command /dish"))
-        )
+        answer = "You could add a dish with command /add_dish", "and give a dish with command /dish"
         send(chat_id, answer)
     if command == "/Hi":
         answer = "Hi, Lucky's friend!"
