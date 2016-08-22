@@ -34,10 +34,15 @@ def hook():
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
     if command == "/dish":
-        answer = "\n".join(
-            random.choince(db.products.find(0, 35))
+        answer = random.randint(db.products.find(0, 35))
+        send(chat_id, answer)
+    if command == "/help":
+        answer == "\n".join(
+            map(str, "You could add a dish with command /add_dish", "give a dish with command /dish")
         )
         send(chat_id, answer)
-
+    if command == "/Hi":
+        answer = "Hi, Lucky's friend!"
+        send(chat_id, answer)
 
     return "OK"
