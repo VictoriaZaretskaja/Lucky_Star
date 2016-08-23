@@ -29,7 +29,6 @@ def hook():
 
     command, *args = text.split()
 
-
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
