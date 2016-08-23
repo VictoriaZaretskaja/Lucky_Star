@@ -27,4 +27,7 @@ def hook():
             map(str, db.products.find(15))
         )
         send(chat_id, answer)
+    if command == "/Hi":
+        answer = "Hi, LUCKY`s Friend!"
+        send(chat_id, answer)
     return "OK"
