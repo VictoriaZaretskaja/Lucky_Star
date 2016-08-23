@@ -22,7 +22,7 @@ def hook():
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
-    if command == "/week":
+    if command == "/dish":
         answer = "\n".join(
             map(str, db.products.find(15))
         )
@@ -30,4 +30,7 @@ def hook():
     if command == "/Hi":
         answer1 = "Hi, LUCKY`s Friend!"
         send(chat_id, answer1)
+    if command == "/Help":
+        answer2 = "You could add a dish with command /add_dish or give a dish with command /dish"
+        send(chat_id, answer2)
     return "OK"
