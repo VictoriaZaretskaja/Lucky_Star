@@ -28,6 +28,6 @@ def hook():
         )
         send(chat_id, answer)
     if command == "/Hi":
-        answer = "Hi, LUCKY`s Friend!"
-        send(chat_id, answer)
+        answer1 = "Hi, LUCKY`s Friend!"
+        send(chat_id, answer1)
     return "OK"
