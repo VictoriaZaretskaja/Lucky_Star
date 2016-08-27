@@ -23,8 +23,9 @@ def hook():
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
     if command == "/dish":
+        x = random.random(0, 20)
         answer = "\n".join(
-            map(str, random.choice(db.products.find({})))
+            map(str, print(db.products.find(x)))
         )
         send(chat_id, answer)
     if command == "/Hi":
