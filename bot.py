@@ -33,4 +33,9 @@ def hook():
     if command == "/Help":
         answer2 = "You could add a dish with command /add_dish or give a dish with command /dish"
         send(chat_id, answer2)
+    if command == "/list":
+        answer3 = "\n".join(
+            map(str, db.products.find())
+                )
+    send(chat_id, answer3)
     return "OK"
