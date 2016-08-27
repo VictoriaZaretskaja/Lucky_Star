@@ -24,7 +24,7 @@ def hook():
         send(chat_id, "Dish added")
     if command == "/dish":
         answer = "\n".join(
-            map(str, db.products.pop(0))
+            map(str, random.choice(db.products.find({})))
         )
         send(chat_id, answer)
     if command == "/Hi":
@@ -35,7 +35,7 @@ def hook():
         send(chat_id, answer2)
     if command == "/list":
         answer3 = "\n".join(
-            map(str, db.products.find())
-                )
+            map(str, db.products.find({}))
+        )
     send(chat_id, answer3)
     return "OK"
