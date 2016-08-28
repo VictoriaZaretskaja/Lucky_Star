@@ -29,8 +29,8 @@ def hook():
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
     if command == "/Hi":
-        answer1 = "Hi, LUCKY`s Friend!"
-        send(chat_id, answer1)
+        answer = "Hi, LUCKY`s Friend!"
+        send(chat_id, answer)
     if command == "video":
         def video(bot, update, msg):
             link = urllib.parse.urlencode({"search_query": msg})
