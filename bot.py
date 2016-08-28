@@ -31,6 +31,9 @@ def hook():
     if command == "/Hi":
         answer = "Hi, LUCKY`s Friend!"
         send(chat_id, answer)
+    if command == "/pic":
+        answer = "http://www.virtusinterpress.org/IMG/jpg/ukr_26740.jpg"
+        send(chat_id, answer)
     if command == "video":
         def video(bot, update, msg):
             link = urllib.parse.urlencode({"search_query": msg})
