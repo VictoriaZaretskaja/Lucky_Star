@@ -1,7 +1,10 @@
 from flask import Flask, request
-import requests
 from pymongo import MongoClient
 import random
+import requests, json
+import urllib.request, urllib.parse,urllib
+import urllib.request
+import random  as  random_number
 
 app = Flask(__name__)
 client = MongoClient("mongodb://Victoria:260784zvg@ds029635.mlab.com:29635/heroku_3gwq73vd")
@@ -28,6 +31,20 @@ def hook():
     if command == "/Hi":
         answer1 = "Hi, LUCKY`s Friend!"
         send(chat_id, answer1)
+    if command == "video":
+        def video(bot, update, msg):
+            link = urllib.parse.urlencode({"search_query": msg})
+            content = urllib.request.urlopen("https://www.youtube.com/results?" + link)
+            search_results = re.findall('href=\"\/watch\?v=(.*?)\"', content.read().decode())
+            if len(search_results) > 0:
+                # Первые 10 результатов
+                search_results = search_results[0:9:1]
+                choice_f = random_number.choice(search_results)
+                yt_link = "https://www.youtube.com/watch?v=" + choice_f
+                bot.sendMessage(update.message.chat_id, text=yt_link, parse_mode=ParseMode.MARKDOWN)
+            else:
+                bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
+        send(chat_id, video())
     if command == "/dish":
         answer = "\n".join(
             map(str, random.choice(db.products))
