@@ -33,7 +33,7 @@ def video(bot, update, msg):
     else:
         bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
 
-products = ["Салат 'Цезарь' Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика",
+products = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
             'Masha', 'Lena', 'Oleg', 'Dima']
 
 @app.route("/hook", methods=['POST'])
