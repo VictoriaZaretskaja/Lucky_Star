@@ -57,9 +57,12 @@ def hook():
             bot.sendMessage(update.message.chat_id, text=yt_link, parse_mode=ParseMode.MARKDOWN)
         else:
             bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
+    if command == "video":
+        answer = video
+        send(chat_id, answer)
     if command == "/list":
         answer = "\n".join(
             map(str, db.products.find({}))
         )
-    send(chat_id, answer)
+        send(chat_id, answer)
     return "OK"
