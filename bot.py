@@ -1,7 +1,7 @@
 from flask import Flask, request
 import requests
 from pymongo import MongoClient
-import random
+
 app = Flask(__name__)
 client = MongoClient("mongodb://Victoria:260784zvg@ds029635.mlab.com:29635/heroku_3gwq73vd")
 db = client.heroku_3gwq73vd
