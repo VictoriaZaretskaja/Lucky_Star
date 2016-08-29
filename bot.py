@@ -33,8 +33,12 @@ def video(bot, update, msg):
     else:
         bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
 
-products = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
+dishes = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
             'Masha', 'Lena', 'Oleg', 'Dima']
+
+
+meal = ['Гречка и фрикассе', 'Макароны с соусом Болоньез', 'Отварной картофель с колбасками',
+        'Картофель пюре с котлетами', 'Рис с рыбными котлетами' ]
 
 @app.route("/hook", methods=['POST'])
 def hook():
@@ -44,11 +48,17 @@ def hook():
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
-    if command == "/Hi":
+    if command == "/hi":
         answer = "Hi, LUCKY`s Friend!"
         send(chat_id, answer)
-    if command == "/dish1":
-        answer = random.choice(products)
+    if command == "/dish":
+        answer = random.choice(dishes)
+        send(chat_id, answer)
+    if command == "/meal":
+        answer = random.choice(meal)
+        send(chat_id, answer)
+    if command == "/help":
+        answer = "command /dish - интересное блюдо, command /meal - блюдо на каждый день"
         send(chat_id, answer)
     if command == "/pic":
         answer = "http://www.virtusinterpress.org/IMG/jpg/ukr_26740.jpg"
@@ -56,8 +66,5 @@ def hook():
     if command == "video":
 
         send(chat_id, video())
-    if command == "/dish":
-        answer = random.choice(db.products)
-        send(chat_id, answer)
 
     return "OK"
