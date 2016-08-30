@@ -23,25 +23,12 @@ def send(chat_id, text):
                       "text": text
                   })
 
-
-def video(bot, update, msg):
-    link = urllib.parse.urlencode({"search_query": msg})
-    content = urllib.request.urlopen("https://www.youtube.com/results?" + link)
-    search_results = re.findall('href=\"\/watch\?v=(.*?)\"', content.read().decode())
-    if len(search_results) > 0:
-        # Первые 10 результатов
-        search_results = search_results[0:9:1]
-        choice_f = random_number.choice(search_results)
-        yt_link = "https://www.youtube.com/watch?v=" + choice_f
-        bot.sendMessage(update.message.chat_id, text=yt_link, parse_mode=ParseMode.MARKDOWN)
-    else:
-        bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
-
-
 products = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
             'Masha', 'Lena', 'Oleg', 'Dima']
 
-meal = ['Гречка', 'Рис', 'Каша', 'Суп', 'Пицца']
+meal = ['Гречневая каша с фрикассе', 'Рис с рыбными котлетами', 'Яичница с беконом', 'Борщ',
+        'Пюре с отбивными', 'А закажи-ка пиццу в Watatsumi - +380505078111', 'Стейк с салатом из пекинской капусты',
+        'Жареная картошка с колбасками']
 
 
 @app.route("/hook", methods=['POST'])
