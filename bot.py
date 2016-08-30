@@ -36,6 +36,9 @@ def video(bot, update, msg):
 products = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
             'Masha', 'Lena', 'Oleg', 'Dima']
 
+meal = ['Гречка', 'Рис', 'Каша', 'Суп', 'Пицца']
+
+
 @app.route("/hook", methods=['POST'])
 def hook():
     chat_id = request.get_json()["message"]["chat"]["id"]
@@ -44,11 +47,17 @@ def hook():
     if command == "/add_dish":
         db.products.insert({"dish": args})
         send(chat_id, "Dish added")
-    if command == "/Hi":
+    if command == "/hi":
         answer = "Hi, LUCKY`s Friend!"
         send(chat_id, answer)
-    if command == "/dish1":
+    if command == "/dish":
         answer = random.choice(products)
+        send(chat_id, answer)
+    if command == "/help":
+        answer = "Do you need some help?"
+        send(chat_id, answer)
+    if command == "/meal":
+        answer = random.choice(meal)
         send(chat_id, answer)
 
     return "OK"
