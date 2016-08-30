@@ -50,14 +50,5 @@ def hook():
     if command == "/dish1":
         answer = random.choice(products)
         send(chat_id, answer)
-    if command == "/pic":
-        answer = "http://www.virtusinterpress.org/IMG/jpg/ukr_26740.jpg"
-        send(chat_id, answer)
-    if command == "video":
-
-        send(chat_id, video())
-    if command == "/dish":
-        answer = random.choice(db.products)
-        send(chat_id, answer)
 
     return "OK"
