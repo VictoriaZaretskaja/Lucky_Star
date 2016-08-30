@@ -23,10 +23,13 @@ def send(chat_id, text):
                       "text": text
                   })
 
-products = ('Картошка в фольге', 'Картофель запеченый с грибами и беконом под сыром', 'омлет', 'картошка', 'бекон')
+products = ('Картошка в фольге http://vkysno.kiev.ua/d-recept-action-detail-rid-1414-page-3.html',
+            'Картофель запеченый с грибами и беконом под сыром ',
+            'Картофельно-мясная вкусняшка http://vkysno.kiev.ua/d-recept-action-detail-rid-1270-page-4.html',
+            'картошка', 'бекон')
 
 meal = ('Гречневая каша с фрикассе', 'Рис с рыбными котлетами', 'Яичница с беконом', 'Борщ',
-        'Пюре с отбивными', 'А закажи-ка пиццу в Watatsumi - +380505078111', 'Стейк с салатом из пекинской капусты',
+        'Пюре с отбивными', 'А закажи-ка пиццу в Watatsumi +380505078111', 'Стейк с салатом из пекинской капусты',
         'Жареная картошка с колбасками')
 
 
@@ -49,5 +52,11 @@ def hook():
         send(chat_id, answer)
     if command == "/meal":
         answer = random.choice(meal)
+        send(chat_id, answer)
+    if command == "/pizza":
+        answer = "Watatsumi +380505078111"
+        send(chat_id, answer)
+    if command == "/sushi":
+        answer = "Watatsumi +380505078111"
         send(chat_id, answer)
     return "OK"
