@@ -24,9 +24,10 @@ def send(chat_id, text):
                   })
 
 products = ('Картошка в фольге http://vkysno.kiev.ua/d-recept-action-detail-rid-1414-page-3.html',
-            'Картофель запеченый с грибами и беконом под сыром ',
+            'Курица с шампиньонами и ананасами http://vkysno.kiev.ua/d-recept-action-detail-rid-791-page-9.html',
             'Картофельно-мясная вкусняшка http://vkysno.kiev.ua/d-recept-action-detail-rid-1270-page-4.html',
-            'картошка', 'бекон')
+            'Паприкаш http://vkysno.kiev.ua/d-recept-action-detail-rid-1074-page-6.html',
+            'Лазанья http://vkysno.kiev.ua/d-recept-action-detail-rid-255-page-9.html')
 
 meal = ('Гречневая каша с фрикассе', 'Рис с рыбными котлетами', 'Яичница с беконом', 'Борщ',
         'Пюре с отбивными', 'А закажи-ка пиццу в Watatsumi +380505078111', 'Стейк с салатом из пекинской капусты',
@@ -48,7 +49,7 @@ def hook():
         answer = random.choice(products)
         send(chat_id, answer)
     if command == "/help":
-        answer = "/meal - еда на каждый день"
+        answer = "/meal - еда на каждый день. Хочется нового? - /dish. Пицца или суши - /pizza, напитки - /mp "
         send(chat_id, answer)
     if command == "/meal":
         answer = random.choice(meal)
@@ -56,7 +57,7 @@ def hook():
     if command == "/pizza":
         answer = "Watatsumi +380505078111"
         send(chat_id, answer)
-    if command == "/sushi":
-        answer = "Watatsumi +380505078111"
+    if command == "/mp":
+        answer = "More Piva +380800302050"
         send(chat_id, answer)
     return "OK"
