@@ -48,7 +48,7 @@ def hook():
         answer = random.choice(products)
         send(chat_id, answer)
     if command == "/help":
-        answer = "Do you need some help?"
+        answer = "/meal - еда на каждый день"
         send(chat_id, answer)
     if command == "/meal":
         answer = random.choice(meal)
