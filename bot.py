@@ -2,16 +2,20 @@ from flask import Flask, request
 from pymongo import MongoClient
 import random
 import requests, json
-import urllib.request, urllib.parse,urllib
+import urllib.request, urllib.parse, urllib
 import urllib.request
 import random  as  random_number
 
 app = Flask(__name__)
 client = MongoClient("mongodb://Victoria:260784zvg@ds029635.mlab.com:29635/heroku_3gwq73vd")
 db = client.heroku_3gwq73vd
+
+
 @app.route('/')
 def test():
     return "It works!"
+
+
 def send(chat_id, text):
     requests.post("https://api.telegram.org/bot253643907:AAGRFi8w-YJiyHw-2qioYIn2wQJMdLx-cnQ/sendMessage",
                   {
@@ -32,6 +36,7 @@ def video(bot, update, msg):
         bot.sendMessage(update.message.chat_id, text=yt_link, parse_mode=ParseMode.MARKDOWN)
     else:
         bot.sendMessage(update.message.chat_id, text='Ничего не найдено.')
+
 
 products = ['Салат Ингредиенты: Кочан пекинской капусты, хлеб серый смешанный(украинский) 3-4 ломтика',
             'Masha', 'Lena', 'Oleg', 'Dima']
@@ -59,5 +64,4 @@ def hook():
     if command == "/meal":
         answer = random.choice(meal)
         send(chat_id, answer)
-
     return "OK"
